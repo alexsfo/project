@@ -1,0 +1,91 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Novo Usuário')}"></head>
+
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+		crossorigin="anonymous"></script>
+
+	<!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+</body>
+
+<div class="container">
+	<div class="row">
+		<h1>Novo usuário</h1>
+	</div>
+	<form th:object="${usuarioDTO}" action="/usuarios" method="POST">
+
+		<div class="mb-3">
+			<label for="form-label">Nome</label>
+			<input class="form-control " th:errorclass="is-invalid" type="text" placeholder="Nome" th:field="*{nome}">
+			<div></div>
+			<div class="invalid-feedback" th:errors="*{nome}"></div>
+		</div>
+
+		<div class="mb-3">
+			<label for="form-label">Sexo</label>
+			<select class="form-select" th:field="*{sexo}">
+				<option value="">Selecione</option>
+				<option th:each="tiposexo : ${sexo}" th:value="${tiposexo}" th:text="${tiposexo}"></option>
+			</select>
+		</div>
+
+		<div class="mb-3">
+			<label for="form-label">Email</label>
+			<input class="form-control" th:errorclass="is-invalid" th:field="*{email}" type="text" id="inputEmail"
+				placeholder="Email">
+			<div class="invalid-feedback" th:errors="*{email}"></div>
+
+		</div>
+
+
+		<div class="mb-3">
+			<label class="col-2 col-form-label">Data de Nascimento</label>
+			<input class="form-control" type="date" value="08-19-2011" th:field="*{dataNascimento}" >
+			<div class="invalid-feedback" th:errors="*{dataNascimento}"></div>
+		</div>
+
+
+
+		<div class="mb-3">
+			<label for="form-label">Naturalidade</label>
+			<input class="form-control" th:errorclass="is-invalid" th:field="*{naturalidade}" type="text"
+				placeholder="Naturalidade">
+			<div class="invalid-feedback" th:errors="*{naturalidade}"></div>
+		</div>
+
+
+		<div class="mb-3">
+			<label for="form-label">Nacionalidade</label>
+			<input class="form-control" th:errorclass="is-invalid" th:field="*{nacionalidade}" type="text"
+				placeholder="Nacionalidade">
+			<div class="invalid-feedback" th:errors="*{naturalidade}"></div>
+		</div>
+
+
+		<div class="mb-3">
+			<label for="form-label">CPF</label>
+			<input class="form-control" th:errorclass="is-invalid" th:field="*{cpf}" type="number" placeholder="CPF">
+			<div class="invalid-feedback" th:errors="*{cpf}"></div>
+
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Submeter </button>
+		<a href="javascript:history.back()">Voltar</a>
+	</form>
+</div>
+<div class="row">
+
+</div>
+</div>
+
+
+</body>
+
+</html>
